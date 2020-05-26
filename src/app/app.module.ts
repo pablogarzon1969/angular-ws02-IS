@@ -19,13 +19,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule  } from '@angular/material/progress-bar';
 import { MatIconModule  } from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AxaComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

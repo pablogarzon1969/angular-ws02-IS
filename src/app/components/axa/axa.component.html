@@ -1,35 +1,18 @@
-<div class="form-group">
-  <button type="button" class="btn btn-danger" (click)="logout()">Cerrar</button>
+<app-header></app-header>
+
+<br>
+<button mat-raised-button color="primary" (click)="testSilentRefresh()">Test silent refresh</button>
+
+<br>
+<mat-card><b>access_token:</b> {{access_token}}</mat-card>
+<mat-card><b>id_token:</b> {{id_token}}</mat-card>
+<mat-card><b>id_token_expiration:</b> {{id_token_expiration}}</mat-card>
+<mat-card><b>access_token_expiration:</b> {{access_token_expiration}}</mat-card>
+
+<div *ngIf="userProfile">
+  <b>user profile:</b>
+  <pre>{{userProfile | json}}</pre>
 </div>
 
-<div class="alert alert-success" role="alert">
-  <h3 class="display-3">WS02 Identity Server</h3>
-  <hr class="my-2">
-  <button class="btn btn-default" (click)="testSilentRefresh()">Test silent refresh</button>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <p>
-        <b>access_token:</b> {{access_token}}
-      </p>
-      <p>
-        <b>id_token:</b> {{id_token}}
-      </p>
-
-      <p>
-        <b>id_token_expiration:</b> {{id_token_expiration}}
-      </p>
-
-      <p>
-        <b>access_token_expiration:</b> {{access_token_expiration}}
-      </p>
 
 
-      <div *ngIf="userProfile">
-        <b>user profile:</b>
-        <pre>{{userProfile | json}}</pre>
-      </div>
-
-    </div>
-  </div>
-
-</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc'
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +21,6 @@ export class LoginComponent implements OnInit {
       }
   }
 
-  login() {
-      this.oauthService.clientId = "WTAbfem86copOIQFsQZ5fUq8u2Ia"; //axa
-      this.oauthService.initImplicitFlow();
-  }
-
-  logout() {
-      this.oauthService.logOut();
-  }
 
   ngOnInit() {
   }
