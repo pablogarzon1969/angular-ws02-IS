@@ -35,7 +35,6 @@ export class AppComponent {
   }
 
   private async  refreshTokenOnLoadIfNeeded() {
-
     this.oauthService.setupAutomaticSilentRefresh();
     this.tokenSubscription = this.oauthService.events.subscribe(e => {
       if (e instanceof OAuthErrorEvent) { console.error(e); }

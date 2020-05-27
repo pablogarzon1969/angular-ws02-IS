@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/axais",
+            "outputPath": "dist/axais/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,6 +25,13 @@
               "src/silent-refresh.html"
             ],
             "styles": [
+              "./node_modules/animate.css/animate.css",
+              "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "./node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "./node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -32,7 +39,9 @@
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/popper.js/dist/umd/popper.min.js"
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/chart.js/dist/Chart.js",
+              "./node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
@@ -124,6 +133,53 @@
             "production": {
               "devServerTarget": "axais:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/axais/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "axais:build",
+            "serverTarget": "axais:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "axais:build:production",
+              "serverTarget": "axais:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "axais:build:production",
+            "serverTarget": "axais:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
