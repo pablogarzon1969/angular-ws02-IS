@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
       .subscribe(user => {
         this.cargando = user.isLoading;
       });
-
   }
 
   login() {

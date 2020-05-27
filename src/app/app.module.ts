@@ -32,10 +32,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CoreModule } from './core/core.module';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './store/reducers/app.reducer';
+
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { appReducers } from './store/reducers/app.reducer';
     AxaComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
