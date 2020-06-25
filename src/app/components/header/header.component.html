@@ -6,5 +6,6 @@
     <button mat-button type="button" *ngIf="!cargando" (click)="login()" >LogIn</button>
     <button  mat-button type="button" *ngIf="cargando" (click)="logout()" >LogOut</button>
     <button  mat-button type="button" *ngIf="cargando" (click)="logoutExternally()" >LogOut Externally</button>
+    <p *ngIf="cargando">Welcome {{userName}}</p>
   </mat-toolbar-row>
 </mat-toolbar>

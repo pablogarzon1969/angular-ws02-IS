@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   uiSubscription: Subscription;
   cargando: boolean = false;
+  public userName: string;
 
   loggedIn = this.store.select(state => state.user.isLoading);
 
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(user => {
         this.cargando = user.isLoading;
       });
+    this.userName = this.getUserName();
   }
 
   login() {
@@ -38,14 +40,40 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.oauthService.logOut();
     this.store.dispatch(auth.loggedIn({ isLogin: false }));
+    this.oauthService.logOut();
     this.router.navigate(['/']);
   }
 
   logoutExternally() {
     window.open(this.oauthService.logoutUrl);
     window.open(`https://localhost:9443/oidc/logout`);
+  }
+
+  public getAccessToken(): string {
+    return this.oauthService.getAccessToken();
+  }
+
+  public getUserClaims(): object {
+    return this.oauthService.getIdentityClaims();
+  }
+
+  public getUserInfo(): string {
+    const idToken = this.oauthService.getIdToken();
+    console.log('id token ', idToken);
+    return typeof idToken['sub'] !== 'undefined' ? idToken['sub'].toString() : '';
+  }
+
+
+
+  public getUserName(): string {
+
+    const accessToken = this.getAccessToken();
+    const claims = this.getUserClaims();
+    console.log('access token ', accessToken);
+    this.getUserInfo();
+    return claims['sub'].split('@')[0];
+
   }
 
 }
