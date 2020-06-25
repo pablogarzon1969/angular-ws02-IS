@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
 
   login() {
     this.oauthService.initImplicitFlow();
+    //this.oauthService.logoutUrl = 'https://localhost:9443/oidc/logout';
 
   }
 
@@ -40,6 +41,11 @@ export class HeaderComponent implements OnInit {
     this.oauthService.logOut();
     this.store.dispatch(auth.loggedIn({ isLogin: false }));
     this.router.navigate(['/']);
+  }
+
+  logoutExternally() {
+    window.open(this.oauthService.logoutUrl);
+    window.open(`https://localhost:9443/oidc/logout`);
   }
 
 }

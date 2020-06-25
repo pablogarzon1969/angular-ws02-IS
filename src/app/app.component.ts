@@ -30,11 +30,12 @@ export class AppComponent {
   }
   private configure() {
     this.oauthService.configure(authConfig);
+   // this.oauthService.logoutUrl = 'https://localhost:9443/oidc/logout';
     this.oauthService.setStorage(sessionStorage);
     this.oauthService.tryLogin({});
   }
 
-  private async  refreshTokenOnLoadIfNeeded() {
+  private async refreshTokenOnLoadIfNeeded() {
     this.oauthService.setupAutomaticSilentRefresh();
     this.tokenSubscription = this.oauthService.events.subscribe(e => {
       if (e instanceof OAuthErrorEvent) { console.error(e); }

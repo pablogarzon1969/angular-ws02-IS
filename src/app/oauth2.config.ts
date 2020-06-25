@@ -15,5 +15,6 @@ export const authConfig: AuthConfig = {
   //disableAtHashCheck: true,
   //responseType: environment.sso.responseType,
   silentRefreshRedirectUri: environment.sso.silentRefreshRedirectUri,
-  oidc: environment.sso.oidc
+  oidc: environment.sso.oidc,
+  logoutUrl: environment.sso.logoutUrl
 };

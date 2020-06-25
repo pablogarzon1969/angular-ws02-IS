@@ -5,5 +5,6 @@
     <span class="example-spacer"></span>
     <button mat-button type="button" *ngIf="!cargando" (click)="login()" >LogIn</button>
     <button  mat-button type="button" *ngIf="cargando" (click)="logout()" >LogOut</button>
+    <button  mat-button type="button" *ngIf="cargando" (click)="logoutExternally()" >LogOut Externally</button>
   </mat-toolbar-row>
 </mat-toolbar>
