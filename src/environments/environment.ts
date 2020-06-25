@@ -7,11 +7,12 @@
 export const environment = {
   production: false,
   sso: {
+    loginUrl: 'https://localhost:9443/oauth2/authorize',
     clientId : 'WTAbfem86copOIQFsQZ5fUq8u2Ia',
     serverUrl: 'https://localhost:9443',
     issuer :  '/oauth2/token',
     redirectUri : window.location.origin + '/index.html',
-    scope: 'openid profile',
+    scope: 'openid',
     tokenEndpoint:  '/oauth2/token',
     userinfoEndpoint:  '/oauth2/userinfo',
     authorizationEndpoint:  '/oauth2/authorize',

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     if (token) {
       console.log('ok');
       this.store.dispatch(auth.loggedIn({ isLogin: true }));
-      this.router.navigate(['axa']);
+      this.router.navigate(['dashboard']);
     }
   }
 

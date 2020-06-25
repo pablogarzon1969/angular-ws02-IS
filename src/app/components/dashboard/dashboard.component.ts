@@ -3,14 +3,12 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
 
 
-
 @Component({
-  selector: 'app-axa',
-  templateUrl: './axa.component.html',
-  styleUrls: ['./axa.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AxaComponent implements OnInit {
-
+export class DashboardComponent implements OnInit {
   userProfile: object;
   private scripts: any = {};
 
@@ -58,6 +56,7 @@ export class AxaComponent implements OnInit {
 
   logout() {
     this.oauthService.logOut();
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AxaComponent } from './components/axa/axa.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OAuthModule } from 'angular-oauth2-oidc';
@@ -44,7 +44,7 @@ import { appReducers } from './store/reducers/app.reducer';
 @NgModule({
   declarations: [
     AppComponent,
-    AxaComponent,
+    DashboardComponent,
     LoginComponent,
     HeaderComponent,
     FooterComponent,
