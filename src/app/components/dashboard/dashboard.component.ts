@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
+import * as usuarioAction from '../../store/actions/usuarios.actions';
+import * as pokemonAction from '../../store/actions/pokemon.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/reducers/app.reducer';
+import { Usuario } from '../../models/usuario.model';
+import { Pokemon } from '../../models/pokemon.model';
 
 
 @Component({
@@ -11,15 +17,34 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   userProfile: object;
   private scripts: any = {};
+  usuarios: Usuario[] = [];
 
+  pokemones: Pokemon[] = [];
   constructor(
     private oauthService: OAuthService,
-    private router: Router) {
+    private router: Router,
+    private store: Store<AppState>) {
     console.log('ok2');
   }
 
   ngOnInit() {
 
+
+    this.store.select('usuarios')
+      .subscribe(({ users }) => {
+        this.usuarios = users;
+        console.log(this.usuarios);
+      });
+
+    this.store.select('pokemones')
+      .subscribe(({ pokemon }) => {
+        this.pokemones = pokemon;
+        console.log(this.pokemones);
+      });
+
+    this.store.dispatch(usuarioAction.cargarUsuarios());
+
+    this.store.dispatch(pokemonAction.cargarPokemones());
   }
 
   set requestAccessToken(value: boolean) {

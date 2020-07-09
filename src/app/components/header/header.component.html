@@ -3,9 +3,10 @@
     <span class="example-fill-remaining-space"></span>
     <span class="align-center"></span>
     <span class="example-spacer"></span>
-    <button mat-button type="button" *ngIf="!cargando" (click)="login()" >LogIn</button>
-    <button  mat-button type="button" *ngIf="cargando" (click)="logout()" >LogOut</button>
-    <button  mat-button type="button" *ngIf="cargando" (click)="logoutExternally()" >LogOut Externally</button>
+    <button mat-button type="button" *ngIf="cargando" routerLink="/chart">Chart</button>
+    <button mat-button type="button" *ngIf="!cargando" (click)="login()">LogIn</button>
+    <button mat-button type="button" *ngIf="cargando" (click)="logout()">LogOut</button>
+    <button mat-button type="button" *ngIf="cargando" (click)="logoutExternally()">LogOut Externally</button>
     <p *ngIf="cargando">Welcome {{userName}}</p>
   </mat-toolbar-row>
 </mat-toolbar>

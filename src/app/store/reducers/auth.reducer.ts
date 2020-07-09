@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import {  loggedUser, loggedIn, logingUserError, logoutAuth} from '../actions/auth.actions';
+import { loggedUser, loggedIn, logingUserError, logoutAuth } from '../actions/auth.actions';
 
 export interface State {
   isLoading: boolean;

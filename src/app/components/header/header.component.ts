@@ -60,8 +60,10 @@ export class HeaderComponent implements OnInit {
 
   public getUserInfo(): string {
     const idToken = this.oauthService.getIdToken();
-    console.log('id token ', idToken);
-    return typeof idToken['sub'] !== 'undefined' ? idToken['sub'].toString() : '';
+    if (idToken !== null) {
+      console.log('id token ', idToken);
+      return typeof idToken['sub'] !== 'undefined' ? idToken['sub'].toString() : '';
+    }
   }
 
 
@@ -70,9 +72,11 @@ export class HeaderComponent implements OnInit {
 
     const accessToken = this.getAccessToken();
     const claims = this.getUserClaims();
+    if(claims !== null){
     console.log('access token ', accessToken);
     this.getUserInfo();
     return claims['sub'].split('@')[0];
+    }
 
   }
 
